@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors(
     {
-        origin: ['http://localhost:3000', 'https://shopify-react-app1.onrender.com', '*'],
+        origin: ['http://localhost:3000', 'https://tour-backend-hxhm.onrender.com', '*'],
         credentials: true,
     }
 ))
