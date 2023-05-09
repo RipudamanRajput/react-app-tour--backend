@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.use(cookieParser())
+
 app.use(session({
     key: "user_sid",
     secret: "randomstr",
