@@ -24,14 +24,14 @@ app.use(express.urlencoded({ extended: true }))
 
 
 app.use(cookieParser())
+
 app.use(session({
     key: "user_sid",
     secret: "randomstr",
     resave: false,
     saveUninitialized: false,
     cookie: {
-        expires: 6000000,
-        httpOnly: false
+        expires: 600000
     }
 }))
 
