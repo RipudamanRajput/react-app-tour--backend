@@ -10,9 +10,13 @@ import session from 'express-session';
 
 const app = express();
 
-app.use(cors())
+app.use(cors(
+    {
+        origin: ['http://localhost:3000', 'https://tour-backend-hxhm.onrender.com', 'https://ripudamanrajput.github.io', '*'],
+        credentials: true,
+    }
+))
 app.use(morgan())
-app.use('/images', express.static(path.join(__dirname, './Uploadmedia')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -27,6 +31,7 @@ app.use(session({
     }
 }))
 
+app.use('/images', express.static(path.join(__dirname, './Uploadmedia')))
 app.get('/', (req, res) => {
     res.status(200)
     res.json({ message: "data" })
