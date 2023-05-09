@@ -22,7 +22,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         expires: 600000,
-        secure: false
+        secure:false
     }
 }))
 
