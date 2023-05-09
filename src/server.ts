@@ -21,13 +21,14 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        expires: 600000
+        expires: 600000,
+        secure: false
     }
 }))
 
 app.use(cors(
     {
-        origin: ['http://localhost:3000', 'https://tour-backend-hxhm.onrender.com', 'https://ripudamanrajput.github.io', '*'],
+        origin: ['http://localhost:3000', 'https://ripudamanrajput.github.io', '*'],
         credentials: true,
     }
 ))
