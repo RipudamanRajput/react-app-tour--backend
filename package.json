@@ -1,12 +1,9 @@
 {
   "name": "react-app--tevel",
-  "homepage": "https://ripudamanrajput.github.io/Recat-app-travel--backend",
   "version": "1.0.0",
   "description": "",
   "main": "Index.js",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node src/index.ts"
   },
@@ -28,7 +25,6 @@
   },
   "devDependencies": {
     "@types/node": "^18.15.10",
-    "gh-pages": "^5.0.0",
     "prisma": "^4.12.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.2"
