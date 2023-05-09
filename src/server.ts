@@ -16,7 +16,7 @@ app.use(cors(
         credentials: true,
     }
 ))
-app.use(morgan('dev'))
+app.use(morgan())
 app.use('/images', express.static(path.join(__dirname, './Uploadmedia')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
