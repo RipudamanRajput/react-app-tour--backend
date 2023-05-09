@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors(
     {
-        origin: ['http://localhost:3000', 'https://tour-backend-hxhm.onrender.com','https://ripudamanrajput.github.io', '*'],
+        origin: ['http://localhost:3000', 'https://tour-backend-hxhm.onrender.com', 'https://ripudamanrajput.github.io', '*'],
         credentials: true,
     }
 ))
@@ -20,8 +20,6 @@ app.use(morgan())
 app.use('/images', express.static(path.join(__dirname, './Uploadmedia')))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
-
 
 app.use(cookieParser())
 app.use(session({
@@ -40,7 +38,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api', sessionChecker, protect, router)
-
 app.use('/user', createNewUser)
 app.use('/signin', protect, signin)
 
