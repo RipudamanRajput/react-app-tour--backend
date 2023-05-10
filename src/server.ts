@@ -15,7 +15,17 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser())
-app.use(session({key: "user_sid", secret: 'randomstr', cookie: { maxAge: 600000 }}))
+app.use(session(
+    {
+        key: "user_sid",
+        secret: 'randomstr',
+        cookie: {
+            maxAge: 600000,
+            httpOnly: false,
+            domain:'tour-backend-ddw8.onrender.com'
+        }
+    }
+))
 
 app.use(cors(
     {
