@@ -21,7 +21,7 @@ app.use(session(
         key: "user_sid",
         secret: 'randomstr',
         cookie: {
-            maxAge: 600000,
+            maxAge: 6000000,
             sameSite: 'none',
             secure: true 
         }
