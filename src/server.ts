@@ -15,16 +15,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser())
-app.use(session({
-    key: "user_sid",
-    secret: "randomstr",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        expires: 600000,
-        secure:false
-    }
-}))
+app.use(session({key: "user_sid", secret: 'randomstr', cookie: { maxAge: 600000 }}))
 
 app.use(cors(
     {
