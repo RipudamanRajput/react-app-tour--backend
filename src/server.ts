@@ -20,9 +20,7 @@ app.use(session(
         key: "user_sid",
         secret: 'randomstr',
         cookie: {
-            maxAge: 600000,
-            httpOnly: false,
-            domain:'tour-backend-ddw8.onrender.com'
+            maxAge: 600000
         }
     }
 ))
