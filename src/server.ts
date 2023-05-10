@@ -21,7 +21,8 @@ app.use(session(
         secret: 'randomstr',
         cookie: {
             maxAge: 600000,
-            sameSite:'none'
+            sameSite: 'none',
+            secure: false
         }
     }
 ))
