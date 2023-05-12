@@ -15,15 +15,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser())
-// app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 app.use(session(
     {
         key: "user_sid",
         secret: 'randomstr',
         cookie: {
             maxAge: 6000000,
-            // sameSite: 'none',
-            // secure: true 
+            sameSite: 'none',
+            secure: true 
         }
     }
 ))
