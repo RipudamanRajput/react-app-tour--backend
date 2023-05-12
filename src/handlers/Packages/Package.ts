@@ -5,7 +5,7 @@ export const addpackage = async (req, res) => {
     try {
         const find = await prisma.packages.findFirst({
             where: {
-                package_name: req.body.package_name,
+                title: req.body.title,
             }
         })
         if (find != null) {
@@ -14,11 +14,14 @@ export const addpackage = async (req, res) => {
             if (req.body) {
                 await prisma.packages.create({
                     data: {
-                        package_name: req.body.package_name,
+                        package_type: req.body.package_type,
+                        duration: req.body.duration,
+                        title: req.body.title,
+                        price: req.body.price,
                         description: req.body.description,
-                        location: req.body.location,
-                        cost: req.body.cost,
-                        hotel: req.body.hotel
+                        overview: req.body.overview,
+                        includes:req.body.includes,
+                        itineraries: req.body.itineraries
                     }
                 })
                 res.json({ message: "done" })
@@ -82,11 +85,14 @@ export const updateapackage = async (req, res) => {
                     id
                 },
                 data: {
-                    package_name: req.body.package_name,
+                    package_type: req.body.package_type,
+                    duration: req.body.duration,
+                    title: req.body.title,
+                    price: req.body.price,
                     description: req.body.description,
-                    location: req.body.location,
-                    cost: req.body.cost,
-                    hotel: req.body.hotel
+                    overview: req.body.overview,
+                    includes:req.body.includes,
+                    itineraries: req.body.itineraries
                 }
             })
             if (data) {

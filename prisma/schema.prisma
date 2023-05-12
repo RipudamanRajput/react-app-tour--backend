@@ -44,17 +44,38 @@ model Locations {
   coordinates   Coordinates[]
 }
 
-model Packages {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt    DateTime @default(now())
-  package_name String
-  description  String
-  hotel        String
-  location     String
-  cost         Float
-}
-
 model Bookings {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
+}
+
+model Packages {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt    DateTime      @default(now())
+  package_type String
+  duration     Int
+  title        String @unique
+  price        Float
+  description  String
+  includes     Includes[]
+  overview     String
+  itineraries  Itineraries[]
+}
+
+type Includes {
+  include_id String
+  title      String
+}
+
+type Itineraries {
+  title       String
+  description String
+  activities  Activities[]
+}
+
+type Activities {
+  activitie_name String
+  description    String
+  location       String
+  timings        String
 }
