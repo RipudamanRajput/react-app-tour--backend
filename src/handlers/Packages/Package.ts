@@ -31,7 +31,7 @@ export const addpackage = async (req, res) => {
 
         }
     } catch (error) {
-        throw new Error(error)
+        // throw new Error(error)
         res.json({ error, result: false })
     }
 
