@@ -26,7 +26,7 @@ export const addpackage = async (req, res) => {
                 })
                 res.json({ message: "done" })
             } else {
-                res.json({ message: "fill mendatory fields", result: false })
+                res.json({ message: "fill mendatory fields", result: false });
             }
 
         }
