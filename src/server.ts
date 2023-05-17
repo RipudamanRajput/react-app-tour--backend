@@ -21,9 +21,11 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-      maxAge: 6000000 // 600,000 milliseconds (10 minutes)
+        maxAge: 6000000, // 600,000 milliseconds (10 minutes)
+        sameSite: 'none',
+        secure: true,
     }
-  }));
+}));
 // app.use(session({
 //   key: "user_sid",
 //   secret: 'randomstr',
