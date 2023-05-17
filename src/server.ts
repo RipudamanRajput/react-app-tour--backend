@@ -15,23 +15,20 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser())
-app.enable('trust proxy')
-app.set("trust proxy", 1);
-app.use(session(
-    {
-        key: "user_sid",
-        secret: 'randomstr',
-        resave: false,
-        proxy:true,
-        name:"tourappcookie",
-        saveUninitialized: false,
-        cookie: {
-            maxAge: 6000000,
-            sameSite: 'none',
-            secure: true 
-        }
-    }
-))
+app.enable('trust proxy');
+app.use(session({
+  key: "user_sid",
+  secret: 'randomstr',
+  resave: false,
+  proxy: true,
+  name: "tourappcookie",
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 6000000,
+    sameSite: 'none',
+    secure: true
+  }
+}));
 
 app.use(cors(
     {
