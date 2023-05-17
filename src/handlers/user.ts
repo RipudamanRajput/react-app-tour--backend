@@ -49,6 +49,7 @@ export const signin = async (req: any, res: any) => {
         const { id, username } = user;
         res.json({ id, username, token })
     } catch (error) {
+        console.log(error,"========================> error")
         res.json({ error })
     }
 
