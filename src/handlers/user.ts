@@ -36,6 +36,12 @@ export const signin = async (req: any, res: any) => {
             where: { username: req.body.username }
         })
 
+        if (user == null) {
+            res.status(401)
+            res.json({ message: "Wrong username & password" })
+            return
+        }
+
         const isValid = await comaprepasswords(req.body.password, user.password)
 
         if (!isValid) {
@@ -49,7 +55,6 @@ export const signin = async (req: any, res: any) => {
         const { id, username } = user;
         res.json({ id, username, token })
     } catch (error) {
-        console.log(error,"========================> error")
         res.json({ error })
     }
 
