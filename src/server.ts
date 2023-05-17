@@ -21,6 +21,7 @@ app.use(session(
         key: "user_sid",
         secret: 'randomstr',
         resave: false,
+        proxy:false,
         saveUninitialized: true,
         cookie: {
             maxAge: 6000000,
