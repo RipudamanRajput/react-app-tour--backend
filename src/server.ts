@@ -23,6 +23,7 @@ app.use(session(
         secret: 'randomstr',
         resave: false,
         proxy:true,
+        name:"tourappcookie",
         saveUninitialized: true,
         cookie: {
             maxAge: 6000000,
