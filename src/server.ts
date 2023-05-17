@@ -24,7 +24,7 @@ app.use(session(
         resave: false,
         proxy:true,
         name:"tourappcookie",
-        saveUninitialized: true,
+        saveUninitialized: false,
         cookie: {
             maxAge: 6000000,
             sameSite: 'none',
