@@ -18,6 +18,7 @@ app.use(cookieParser())
 app.enable('trust proxy');
 app.use(session({
     secret: 'your-secret-key',
+    key:"user_id",
     resave: false,
     saveUninitialized: true,
     cookie: {
