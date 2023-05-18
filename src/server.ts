@@ -19,10 +19,10 @@ app.enable('trust proxy');
 app.use(session({
   key: "user_sid",
   secret: 'randomstr',
-  resave: false,
-  proxy: true,
-  name: "tourappcookie",
-  saveUninitialized: false,
+//   resave: false,
+//   proxy: true,
+//   name: "tourappcookie",
+//   saveUninitialized: false,
   cookie: {
     maxAge: 6000000,
     sameSite: 'none',
