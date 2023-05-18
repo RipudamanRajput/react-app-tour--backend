@@ -17,29 +17,18 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.enable('trust proxy');
 app.use(session({
-    secret: 'your-secret-key',
-    key:"user_id",
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        maxAge: 6000000, // 600,000 milliseconds (10 minutes)
-        sameSite: 'none',
-        secure: true,
-    }
+  key: "user_sid",
+  secret: 'randomstr',
+  resave: false,
+  proxy: true,
+  name: "tourappcookie",
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 6000000,
+    sameSite: 'none',
+    secure: true,
+  }
 }));
-// app.use(session({
-//   key: "user_sid",
-//   secret: 'randomstr',
-//   resave: false,
-//   proxy: true,
-//   name: "tourappcookie",
-//   saveUninitialized: false,
-//   cookie: {
-//     maxAge: 6000000,
-//     sameSite: 'none',
-//     secure: true,
-//   }
-// }));
 
 app.use(cors(
     {
