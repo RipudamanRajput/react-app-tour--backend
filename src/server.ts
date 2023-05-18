@@ -3,10 +3,11 @@ import path from 'path';
 import morgan from 'morgan';
 import cors from 'cors';
 import router from './router';
-import { createNewUser, signin } from './handlers/user';
+import { Optmmatch, createNewUser, generateOTP, resetpass, signin } from './handlers/user';
 import { protect, sessionChecker } from './module/auth';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
+import { mailer } from './module/Middleware/expressValidation';
 
 const app = express();
 
@@ -15,15 +16,15 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser())
-app.enable('trust proxy');
+// app.enable('trust proxy');
 app.use(session({
-  key: "user_sid",
-  secret: 'randomstr',
-  cookie: {
-    maxAge: 6000000,
-    sameSite: 'none',
-    secure: true,
-  }
+    key: "user_sid",
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+        maxAge: 6000000,
+        // sameSite: 'none',
+        // secure: true,
+    }
 }));
 
 app.use(cors(
@@ -37,10 +38,13 @@ app.get('/', (req, res) => {
     res.status(200)
     res.json({ message: "data" })
 })
-
+app.use('/mailto', mailer)
 app.use('/api', sessionChecker, protect, router)
 app.use('/user', createNewUser)
 app.use('/signin', protect, signin)
+app.use('/userupdate', generateOTP)
+app.use('/resetpass', Optmmatch, resetpass)
+
 
 app.use((err, req, res, next) => {
     console.log(err);

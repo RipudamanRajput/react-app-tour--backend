@@ -21,7 +21,8 @@
     "express-validator": "^6.15.0",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.2"
   },
   "devDependencies": {
     "@types/node": "^18.15.10",

@@ -42,6 +42,7 @@ export const addhotel = async (req, res) => {
 
 // --- get all hotel details
 export const gethotels = async (req, res) => {
+    
     try {
         const data = await prisma.hotels.findMany();
         if (data) {
