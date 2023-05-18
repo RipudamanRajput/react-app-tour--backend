@@ -29,7 +29,10 @@ app.use(session({
 
 app.use(cors(
     {
-        origin: ['http://localhost:3000', 'https://ripudamanrajput.github.io', '*'],
+        origin: ['http://localhost:3000',
+            'https://ripudamanrajput.github.io',
+            "https://tour-frontend-yqo0.onrender.com",
+            '*'],
         credentials: true,
     }
 ))
