@@ -24,6 +24,7 @@ app.use(session({
         maxAge: 6000000,
         // sameSite: 'none',
         // secure: true,
+        domain:"domain.de"
     }
 }));
 
