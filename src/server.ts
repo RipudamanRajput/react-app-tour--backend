@@ -21,10 +21,9 @@ app.use(session({
     key: "user_sid",
     secret: process.env.SESSION_SECRET,
     cookie: {
-        maxAge: 6000000,
+        // maxAge: 6000000,
         sameSite: 'none',
         secure: true,
-        domain:"domain.de"
     }
 }));
 
