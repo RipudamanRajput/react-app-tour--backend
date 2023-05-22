@@ -16,14 +16,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser())
-app.enable('trust proxy');
+// app.enable('trust proxy');
 app.use(session({
     key: "user_sid",
     secret: process.env.SESSION_SECRET,
     cookie: {
         maxAge: 6000000,
-        sameSite: 'none',
-        secure: true,
+        // sameSite: 'none',
+        // secure: true,
     }
 }));
 

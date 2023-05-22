@@ -2,7 +2,7 @@ import prisma from "../../db";
 
 // --- add package to db
 export const addpackage = async (req, res) => {
-    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries } = JSON.parse(req.body.data)
+    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, } = JSON.parse(req.body.data)
     const ar = [];
     itineraries.forEach((item, index) => {
         ar.push({
@@ -15,7 +15,12 @@ export const addpackage = async (req, res) => {
         const arr = [];
         data.forEach((item, index) => {
             arr.push({
-                images: `https://tour-backend-ddw8.onrender.com/images/${item.activitie_name.replace(/ /g,'_')}_${index}.png`,
+                // images: item.images !== "" ? item.images : `${process.env.PORT}/images/${item.activitie_name.replace(/ /g, '_')}_${index}.png`,
+                images: !Object.keys(item).includes("images") ?
+                    "https://tour-backend-ddw8.onrender.com/images/dsfdsf_0.png" :
+                    item.images != "" ?
+                        item.images :
+                        `${process.env.PORT}/images/${item.activitie_name.replace(/ /g, '_')}_${index}.png`,
                 activitie_name: item.activitie_name,
                 description: item.description,
                 location: item.location,
@@ -58,7 +63,6 @@ export const addpackage = async (req, res) => {
 
         }
     } catch (error) {
-        console.log(error,"===>")
         // throw new Error(error)
         res.json({ error, result: false })
     }
@@ -115,7 +119,11 @@ export const updateapackage = async (req, res) => {
         const arr = [];
         data.forEach((item, index) => {
             arr.push({
-                images: `https://tour-backend-ddw8.onrender.com/images/${item.activitie_name.replace(/ /g,'_')}_${index}.png`,
+                images: !Object.keys(item).includes("images") ?
+                    "https://tour-backend-ddw8.onrender.com/images/dsfdsf_0.png" :
+                    item.images != "" ?
+                        item.images :
+                        `${process.env.PORT}/images/${item.activitie_name.replace(/ /g, '_')}_${index}.png`,
                 activitie_name: item.activitie_name,
                 description: item.description,
                 location: item.location,
@@ -152,6 +160,7 @@ export const updateapackage = async (req, res) => {
             })
             if (data) {
                 res.json({ status: "sucessfully updated", data })
+                // res.json(req.body.data)
             }
         } else {
             res.json({ message: "kindly provide proper data ", result: false })

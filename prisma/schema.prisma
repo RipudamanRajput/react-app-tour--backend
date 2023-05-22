@@ -93,5 +93,5 @@ type Activities {
   description    String
   location       String
   timings        String
-  images         String
+  images         String?
 }
