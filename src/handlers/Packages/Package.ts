@@ -5,7 +5,6 @@ export const addpackage = async (req, res) => {
     const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries } = JSON.parse(req.body.data)
     const ar = [];
     itineraries.forEach((item, index) => {
-
         ar.push({
             title: item.title,
             description: item.description,
@@ -30,13 +29,13 @@ export const addpackage = async (req, res) => {
     try {
         const find = await prisma.packages.findFirst({
             where: {
-                title: req.body.title,
+                title,
             }
         })
         if (find != null) {
             res.json({ message: "package already exist", result: false })
         } else {
-            if (req.body) {
+            if (req.body.data) {
                 await prisma.packages.create({
                     data: {
                         package_type: package_type,
