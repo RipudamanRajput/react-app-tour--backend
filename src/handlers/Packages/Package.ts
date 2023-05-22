@@ -16,7 +16,7 @@ export const addpackage = async (req, res) => {
         const arr = [];
         data.forEach((item, index) => {
             arr.push({
-                images: `http://localhost:3001/images/${item.activitie_name.replace(/ /g,'_')}_${index}.png`,
+                images: `https://tour-backend-ddw8.onrender.com/images/${item.activitie_name.replace(/ /g,'_')}_${index}.png`,
                 activitie_name: item.activitie_name,
                 description: item.description,
                 location: item.location,
@@ -60,7 +60,7 @@ export const addpackage = async (req, res) => {
         }
     } catch (error) {
         console.log(error,"===>")
-        throw new Error(error)
+        // throw new Error(error)
         res.json({ error, result: false })
     }
 
