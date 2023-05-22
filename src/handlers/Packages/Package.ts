@@ -59,6 +59,7 @@ export const addpackage = async (req, res) => {
 
         }
     } catch (error) {
+        console.log(error,"===>")
         throw new Error(error)
         res.json({ error, result: false })
     }
