@@ -4,6 +4,8 @@ import { addhotel, deleteahotel, getahotel, gethotels, updateahotel } from './ha
 import { addlocation, deletealocation, getalocation, getlocations, updatealocation } from './handlers/Locations/Loaction';
 import { addpackage, deleteapackage, getapackage, getpackages, updateapackage } from './handlers/Packages/Package';
 import UploadMedia from './module/Middleware/UploadMedia';
+import { addpackagestype, deleteproducttype, getallproducttype } from './handlers/Packages/Packagetype';
+import { addicludeitem, geticludeitem, removeicludeitem } from './handlers/Packages/Includeitem';
 
 
 const router = Router();
@@ -18,9 +20,23 @@ router.delete('/removehotel/:id', deleteahotel)
 /** for package **/
 router.get('/getpackages', getpackages)
 router.get('/getpackage/:id', getapackage)
-router.post('/addpackage', handleInputErrors, addpackage)
-router.put('/updatepackage/:id', handleInputErrors, updateapackage)
+router.post('/addpackage', UploadMedia, handleInputErrors, addpackage)
+router.put('/updatepackage/:id', UploadMedia, handleInputErrors, updateapackage)
 router.delete('/removepackage/:id', deleteapackage)
+
+/** for package type  **/
+router.get('/getpackagestype', getallproducttype)
+router.get('/getpackagestype/:id', (req, res) => { })
+router.post('/addpackagestype', handleInputErrors, addpackagestype)
+router.put('/updatepackagestype', handleInputErrors, (req, res) => { })
+router.delete('/removepackagestype/:id', deleteproducttype)
+
+/** for include type **/
+router.get('/geticludeitem', geticludeitem)
+router.get('/geticludeitem/:id', (req, res) => { })
+router.post('/addicludeitem', handleInputErrors, addicludeitem)
+router.put('/updateicludeitem', handleInputErrors, (req, res) => { })
+router.delete('/removeicludeitem/:id', removeicludeitem)
 
 /** for loaction **/
 router.get('/getloactions', getlocations)

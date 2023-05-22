@@ -50,9 +50,7 @@ app.use('/resetpass', Optmmatch, resetpass)
 
 
 app.use((err, req, res, next) => {
-    console.log(err);
     res.json({ message: "oops Something went wrong" })
-
 })
 
 export default app;

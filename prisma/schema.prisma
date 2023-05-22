@@ -50,16 +50,31 @@ model Bookings {
 }
 
 model Packages {
-  id           String        @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt    DateTime      @default(now())
-  package_type String
-  duration     Int
-  title        String @unique
-  price        Float
-  description  String
-  includes     Includes[]
-  overview     String
-  itineraries  Itineraries[]
+  id             String        @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt      DateTime      @default(now())
+  package_type   String
+  duration       Int
+  title          String        @unique
+  price          Float
+  discount_type  String
+  discount_value Float
+  Final_price    Float
+  includes       Includes[]
+  itineraries    Itineraries[]
+}
+
+model PackageType {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  label     String   @unique
+  value     String   @unique
+}
+
+model IncludesType {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt  DateTime @default(now())
+  title      String   @unique
+  include_id String   @unique
 }
 
 type Includes {
@@ -78,4 +93,5 @@ type Activities {
   description    String
   location       String
   timings        String
+  images         String
 }

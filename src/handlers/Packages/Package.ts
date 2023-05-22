@@ -2,6 +2,31 @@ import prisma from "../../db";
 
 // --- add package to db
 export const addpackage = async (req, res) => {
+    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries } = JSON.parse(req.body.data)
+    const ar = [];
+    itineraries.forEach((item, index) => {
+
+        ar.push({
+            title: item.title,
+            description: item.description,
+            activities: Activityimages(item.activities)
+        })
+    })
+    function Activityimages(data) {
+        const arr = [];
+        data.forEach((item, index) => {
+            arr.push({
+                images: `http://localhost:3001/images/${item.activitie_name.replace(/ /g,'_')}_${index}.png`,
+                activitie_name: item.activitie_name,
+                description: item.description,
+                location: item.location,
+                timings: item.timings,
+            })
+
+        })
+        return arr;
+    }
+
     try {
         const find = await prisma.packages.findFirst({
             where: {
@@ -14,14 +39,17 @@ export const addpackage = async (req, res) => {
             if (req.body) {
                 await prisma.packages.create({
                     data: {
-                        package_type: req.body.package_type,
-                        duration: req.body.duration,
-                        title: req.body.title,
-                        price: req.body.price,
-                        description: req.body.description,
-                        overview: req.body.overview,
-                        includes:req.body.includes,
-                        itineraries: req.body.itineraries
+                        package_type: package_type,
+                        duration: duration,
+                        title: title,
+                        price: price,
+                        discount_type: discount_type,
+                        discount_value: discount_value,
+                        Final_price: Final_price,
+                        // description: req.body.description,
+                        // overview: req.body.overview,
+                        includes: includes,
+                        itineraries: ar
                     }
                 })
                 res.json({ message: "done" })
@@ -31,7 +59,7 @@ export const addpackage = async (req, res) => {
 
         }
     } catch (error) {
-        // throw new Error(error)
+        throw new Error(error)
         res.json({ error, result: false })
     }
 
@@ -73,6 +101,30 @@ export const getapackage = async (req, res) => {
 // --- update a specific package data 
 export const updateapackage = async (req, res) => {
     const id = req.params.id;
+    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries } = JSON.parse(req.body.data)
+    const ar = [];
+    itineraries.forEach((item, index) => {
+
+        ar.push({
+            title: item.title,
+            description: item.description,
+            activities: Activityimages(item.activities)
+        })
+    })
+    function Activityimages(data) {
+        const arr = [];
+        data.forEach((item, index) => {
+            arr.push({
+                images: `https://tour-backend-ddw8.onrender.com/images/${item.activitie_name.replace(/ /g,'_')}_${index}.png`,
+                activitie_name: item.activitie_name,
+                description: item.description,
+                location: item.location,
+                timings: item.timings,
+            })
+
+        })
+        return arr;
+    }
     try {
         const data = await prisma.packages.findFirst({
             where: {
@@ -85,14 +137,17 @@ export const updateapackage = async (req, res) => {
                     id
                 },
                 data: {
-                    package_type: req.body.package_type,
-                    duration: req.body.duration,
-                    title: req.body.title,
-                    price: req.body.price,
-                    description: req.body.description,
-                    overview: req.body.overview,
-                    includes:req.body.includes,
-                    itineraries: req.body.itineraries
+                    package_type: package_type,
+                    duration: duration,
+                    title: title,
+                    price: price,
+                    discount_type: discount_type,
+                    discount_value: discount_value,
+                    Final_price: Final_price,
+                    // description: req.body.description,
+                    // overview: req.body.overview,
+                    includes: includes,
+                    itineraries: ar
                 }
             })
             if (data) {

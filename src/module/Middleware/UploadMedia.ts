@@ -7,13 +7,15 @@ import express from 'express';
 // function Uploadassests(req, res, next) {
     // app.use('/uploads', express.static(path.join(__dirname, '../../../src/Uploadmedia')));
 
+    
+
     const storage = multer.diskStorage({
         destination: (req, res, cb) => {
             cb(null, 'src/Uploadmedia')
 
         },
         filename: (req, file, cb) => {
-            cb(null, (file.originalname + ".png"));
+            cb(null, (file.originalname.replace(/ /g,'_') + ".png"));
         }
     });
 
