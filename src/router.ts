@@ -6,18 +6,13 @@ import { addpackage, deleteapackage, getapackage, getpackages, updateapackage } 
 import UploadMedia from './module/Middleware/UploadMedia';
 import { addpackagestype, deleteproducttype, getallproducttype } from './handlers/Packages/Packagetype';
 import { addicludeitem, geticludeitem, removeicludeitem } from './handlers/Packages/Includeitem';
+import { Addtrip, deleteaquery, getallquery, getaquery } from './handlers/Trips/Trip';
+import { addbeaches, addislands, addspot, deletebeach, deleteisland, deletesport, getBeachs, getislands, getsports } from './handlers/Events/Events';
 
 
 const router = Router();
 
-/** for hotels **/
-router.get('/gethotels', gethotels)
-router.get('/gethotel/:id', getahotel)
-router.post('/addhotel', UploadMedia, handleInputErrors, addhotel)
-router.put('/updatehotel/:id', handleInputErrors, updateahotel)
-router.delete('/removehotel/:id', deleteahotel)
-
-/** for package **/
+/** ------------------------------ for package **/
 router.get('/getpackages', getpackages)
 router.get('/getpackage/:id', getapackage)
 router.post('/addpackage', UploadMedia, handleInputErrors, addpackage)
@@ -37,6 +32,32 @@ router.get('/geticludeitem/:id', (req, res) => { })
 router.post('/addicludeitem', handleInputErrors, addicludeitem)
 router.put('/updateicludeitem', handleInputErrors, (req, res) => { })
 router.delete('/removeicludeitem/:id', removeicludeitem)
+
+
+/** ------------------------------ for Book my trip **/
+router.get('/getmytrips', getallquery)
+router.get('/getmytrip/:id', getaquery)
+router.post('/addmytrip', handleInputErrors, Addtrip)
+router.put('/updatemytrip', handleInputErrors, (req, res) => { })
+router.delete('/removemytrip/:id', deleteaquery)
+
+/** ------------------------------- for Events **/
+router.get('/getsports', getsports)
+router.post('/addsport', handleInputErrors, addspot)
+router.delete('/removesport/:id', deletesport)
+router.get('/getislandss', getislands)
+router.post('/addislands', handleInputErrors, addislands)
+router.delete('/removeislands/:id', deleteisland)
+router.get('/getbeaches', getBeachs)
+router.post('/addbeache', handleInputErrors, addbeaches)
+router.delete('/removebeache/:id', deletebeach)
+
+/** for hotels **/
+router.get('/gethotels', gethotels)
+router.get('/gethotel/:id', getahotel)
+router.post('/addhotel', UploadMedia, handleInputErrors, addhotel)
+router.put('/updatehotel/:id', handleInputErrors, updateahotel)
+router.delete('/removehotel/:id', deleteahotel)
 
 /** for loaction **/
 router.get('/getloactions', getlocations)

@@ -1,8 +1,12 @@
 {
     "compilerOptions": {
+        // "forceConsistentCasingInFileNames": false,
+        // "strict": false,
         "sourceMap": true,
         "outDir": "dist",
-        "lib": ["esnext"],
+        "lib": [
+            "esnext"
+        ],
         "esModuleInterop": true
     }
 }
