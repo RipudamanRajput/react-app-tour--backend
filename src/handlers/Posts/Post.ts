@@ -16,14 +16,13 @@ export async function Addpost(req, res) {
             }
         }
     } catch (error) {
-        console.log(error, "======>")
         res.json({ message: error, result: false })
     }
 }
 
 export async function getallpost(req, res) {
     try {
-        const data = await prisma.mytrip.findMany()
+        const data = await prisma.posts.findMany()
         if (data) {
             res.json({ data })
         } else {
@@ -37,7 +36,7 @@ export async function getallpost(req, res) {
 export async function getapost(req, res) {
     const id = req.params.id;
     try {
-        const data = await prisma.mytrip.findFirst({
+        const data = await prisma.posts.findFirst({
             where: {
                 id: id
             }
@@ -49,6 +48,35 @@ export async function getapost(req, res) {
         }
     } catch (error) {
         res.json({ message: error, result: false })
+    }
+}
+
+export const updateapost = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const data = await prisma.posts.findFirst({
+            where: {
+                id: id
+            }
+        })
+        if (id.length == 24 && data !== null) {
+            const data = await prisma.posts.update({
+                where: {
+                    id
+                },
+                data: {
+                    blocks: req.body.blocks,
+                    entityMap: req.body.entityMap
+                }
+            })
+            if (data) {
+                res.json({ status: "sucessfully updated", data })
+            }
+        } else {
+            res.json({ message: "kindly provide proper data ", result: false })
+        }
+    } catch (error) {
+        res.json({ message: "something goews wrong", result: false })
     }
 }
 

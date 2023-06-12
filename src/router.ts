@@ -8,7 +8,7 @@ import { addpackagestype, deleteproducttype, getallproducttype } from './handler
 import { addicludeitem, geticludeitem, removeicludeitem } from './handlers/Packages/Includeitem';
 import { Addtrip, deleteaquery, getallquery, getaquery } from './handlers/Trips/Trip';
 import { addbeaches, addislands, addspot, deletebeach, deleteisland, deletesport, getBeachs, getislands, getsports } from './handlers/Events/Events';
-import { Addpost } from './handlers/Posts/Post';
+import { Addpost, getallpost, getapost, updateapost } from './handlers/Posts/Post';
 
 
 const router = Router();
@@ -54,10 +54,10 @@ router.post('/addbeache', handleInputErrors, addbeaches)
 router.delete('/removebeache/:id', deletebeach)
 
 /** --------------------------------  For Posts**/
-router.get('/getposts', getallquery, (req, res) => { })
-router.get('/getpost/:id', getaquery, (req, res) => { })
+router.get('/getposts', getallpost)
+router.get('/getpost/:id', getapost)
 router.post('/addpost', handleInputErrors, Addpost)
-router.put('/updatepost', handleInputErrors, (req, res) => { })
+router.put('/updatepost/:id', handleInputErrors, updateapost)
 router.delete('/removepost/:id', deleteaquery, (req, res) => { })
 
 /** for hotels **/
