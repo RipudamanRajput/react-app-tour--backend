@@ -23,14 +23,18 @@ export function getallimages(req, res) {
     }
 }
 
+export function addfile(req, res) {
+    res.json({ message: "image added", result: true })
+}
+
 export function deletefile(req, res) {
     const id = req.params.id;
     const directoryPath = path.join(__dirname, `../../Uploadmedia/${id}`);
     fs.unlink(directoryPath, (err) => {
         if (err) {
             res.json({ message: `No file fount by ${id} this name to delete`, result: false })
-        }else{
-            res.json({ message: 'Delete File successfully',result: true })
+        } else {
+            res.json({ message: 'Delete File successfully', result: true })
         }
     });
 }

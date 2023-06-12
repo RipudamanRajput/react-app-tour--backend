@@ -2,7 +2,7 @@ import prisma from "../../db";
 
 // --- add package to db
 export const addpackage = async (req, res) => {
-    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, } = JSON.parse(req.body.data)
+    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide } = JSON.parse(req.body.data)
     const ar = [];
     itineraries.forEach((item, index) => {
         ar.push({
@@ -53,7 +53,8 @@ export const addpackage = async (req, res) => {
                         // description: req.body.description,
                         // overview: req.body.overview,
                         includes: includes,
-                        itineraries: ar
+                        itineraries: ar,
+                        Guide: Guide
                     }
                 })
                 res.json({ message: "done" })

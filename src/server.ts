@@ -17,14 +17,14 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser())
-app.enable('trust proxy');
+// app.enable('trust proxy');
 app.use(session({
     name: "user_sid",
     secret: process.env.SESSION_SECRET,
     cookie: {
         maxAge: 6000000,
-        sameSite: 'none',
-        secure: true,
+        // sameSite: 'none',
+        // secure: true,
     }
 }));
 
@@ -39,17 +39,15 @@ app.use(cors(
     }
 ))
 
-
-
 app.get('/', (req, res) => {
     res.status(200)
     res.json({ message: "Server" })
 })
 app.use('/images', express.static(path.join(__dirname, './Uploadmedia')))
-app.use('/mailto', mailer)
 app.use('/api', sessionChecker, protect, router)
 app.use('/user', createNewUser)
 app.use('/signin', protect, signin)
+app.use('/mailto', mailer)
 app.use('/userupdate', generateOTP)
 app.use('/resetpass', Optmmatch, resetpass)
 app.use('/media', Mediarouter)

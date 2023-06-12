@@ -2,8 +2,6 @@ import { Prisma } from "@prisma/client";
 import prisma from "../db";
 import { comaprepasswords, createJWT, hashpassword } from "../module/auth";
 import nodemailer from 'nodemailer';
-import { error } from "console";
-
 
 
 export const createNewUser = async (req: any, res: any) => {

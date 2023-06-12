@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        // "forceConsistentCasingInFileNames": false,
+        "forceConsistentCasingInFileNames": false,
         // "strict": false,
         "sourceMap": true,
         "outDir": "dist",

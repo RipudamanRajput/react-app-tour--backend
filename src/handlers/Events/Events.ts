@@ -2,7 +2,7 @@ import prisma from "../../db";
 
 // ------------ sports
 export async function addspot(req: any, res: any) {
-    
+
     try {
         const find = await prisma.sports.findFirst({
             where: {
@@ -13,7 +13,9 @@ export async function addspot(req: any, res: any) {
             await prisma.sports.create({
                 data: {
                     label: req.body.label,
-                    value: req.body.value
+                    value: req.body.value,
+                    island: req.body.island,
+                    Beach: req.body.Beach
                 }
             })
             res.json({ mssage: "Sport Added", result: true })
@@ -141,7 +143,8 @@ export async function addbeaches(req: any, res: any) {
             await prisma.beachesplaces.create({
                 data: {
                     label: req.body.label,
-                    value: req.body.value
+                    value: req.body.value,
+                    island: req.body.island,
                 }
             })
             res.json({ mssage: "Beach Added", result: true })

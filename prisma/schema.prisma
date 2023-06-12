@@ -56,6 +56,7 @@ model Packages {
   Final_price    Float?
   includes       Includes[]
   itineraries    Itineraries[]
+  Guide          Guidelist[]
 }
 
 model PackageType {
@@ -70,6 +71,14 @@ model IncludesType {
   createdAt  DateTime @default(now())
   title      String   @unique
   include_id String   @unique
+}
+
+type Guidelist {
+  Guide_name        String
+  Guide_designation String
+  Guide_description String?
+  Guide_social      String
+  Guide_thumbnail   String
 }
 
 type Includes {
@@ -129,6 +138,8 @@ model Sports {
   createdAt DateTime @default(now())
   label     String
   value     String
+  island    String
+  Beach     String
 }
 
 model Islandsplaces {
@@ -143,4 +154,53 @@ model Beachesplaces {
   createdAt DateTime @default(now())
   label     String
   value     String
+  island    String
+}
+
+model Posts {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime    @default(now())
+  blocks    Blocks[]
+  entityMap entityMap[]
+}
+
+type Blocks {
+  key               String?
+  text              String?
+  type              String?
+  depth             Int?
+  inlineStyleRanges inlineStyleRanges[]
+  entityRanges      entityRanges[]
+  data              data[]
+}
+
+type inlineStyleRanges {
+  length Int?
+  offset Int?
+  style  String?
+}
+
+type entityRanges {
+  key    Int?
+  length Int?
+  offset Int?
+}
+
+type data {
+  textAlign String?
+}
+
+type entityMap {
+  type       String?
+  mutability String?
+  data       entitydata[]
+}
+
+type entitydata {
+  url          String?
+  targetOption String?
+  src          String?
+  height       String?
+  width        String?
+  alignment    String?
 }

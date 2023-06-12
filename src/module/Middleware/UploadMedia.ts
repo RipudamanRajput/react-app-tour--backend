@@ -5,36 +5,36 @@ import express from 'express';
 // const app = express();
 
 // function Uploadassests(req, res, next) {
-    // app.use('/uploads', express.static(path.join(__dirname, '../../../src/Uploadmedia')));
+// app.use('/uploads', express.static(path.join(__dirname, '../../../src/Uploadmedia')));
 
-    
 
-    const storage = multer.diskStorage({
-        destination: (req, res, cb) => {
-            cb(null, 'src/Uploadmedia')
 
-        },
-        filename: (req, file, cb) => {
-            cb(null, (file.originalname.replace(/ /g,'_') + ".png"));
-        }
-    });
+const storage = multer.diskStorage({
+    destination: (req, res, cb) => {
+        cb(null, 'src/Uploadmedia')
 
-    const fileFilter = (req, file, cb) => {
-        if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png') {
-            cb(null, true);
-        } else {
-            cb(null, false);
-        }
+    },
+    filename: (req, file, cb) => {
+        cb(null, (file.originalname.replace(/ /g, '_') + ".png"));
     }
+});
 
-   let Upload= multer(
-        {
-            storage,
-            fileFilter
-        }
-    );
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
 
-    // next();
+let Upload = multer(
+    {
+        storage,
+        fileFilter
+    }
+);
+
+// next();
 // }
 
 export default Upload.array('image')
