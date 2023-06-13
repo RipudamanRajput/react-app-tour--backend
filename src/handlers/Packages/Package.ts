@@ -106,7 +106,7 @@ export const getapackage = async (req, res) => {
 // --- update a specific package data 
 export const updateapackage = async (req, res) => {
     const id = req.params.id;
-    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries } = JSON.parse(req.body.data)
+    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide } = JSON.parse(req.body.data)
     const ar = [];
     itineraries.forEach((item, index) => {
 
@@ -156,7 +156,8 @@ export const updateapackage = async (req, res) => {
                     // description: req.body.description,
                     // overview: req.body.overview,
                     includes: includes,
-                    itineraries: ar
+                    itineraries: ar,
+                    Guide: Guide
                 }
             })
             if (data) {
@@ -167,8 +168,7 @@ export const updateapackage = async (req, res) => {
             res.json({ message: "kindly provide proper data ", result: false })
         }
     } catch (error) {
-        // throw new Error(error)
-        req.json({ message: "something goews wrong", result: false })
+        res.json({ message: "something goews wrong", result: false })
     }
 }
 

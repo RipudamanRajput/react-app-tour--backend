@@ -7,7 +7,6 @@ export const addicludeitem = async (req, res) => {
                 include_id: req.body.include_id
             }
         })
-        console.log(package_type)
         if (package_type == null) {
             await prisma.includesType.create(
                 {
@@ -22,8 +21,6 @@ export const addicludeitem = async (req, res) => {
             res.json({ message: "Include item type already exists", result: false })
         }
     } catch (error) {
-        console.log(error)
-
         res.json({ error, result: false })
 
     }

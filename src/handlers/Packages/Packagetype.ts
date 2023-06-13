@@ -7,7 +7,6 @@ export const addpackagestype = async (req, res) => {
                 label: req.body.label
             }
         })
-        console.log(package_type)
         if (package_type == null) {
             await prisma.packageType.create(
                 {
