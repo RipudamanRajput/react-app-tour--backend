@@ -2,7 +2,7 @@ import prisma from "../../db";
 
 // --- add package to db
 export const addpackage = async (req, res) => {
-    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide } = JSON.parse(req.body.data)
+    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide, reviews } = JSON.parse(req.body.data)
     const ar = [];
     itineraries.forEach((item, index) => {
         ar.push({
@@ -54,7 +54,8 @@ export const addpackage = async (req, res) => {
                         // overview: req.body.overview,
                         includes: includes,
                         itineraries: ar,
-                        Guide: Guide
+                        Guide: Guide,
+                        reviews: reviews
                     }
                 })
                 res.json({ message: "done" })
@@ -106,9 +107,9 @@ export const getapackage = async (req, res) => {
 // --- update a specific package data 
 export const updateapackage = async (req, res) => {
     const id = req.params.id;
-    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide } = JSON.parse(req.body.data)
+    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide, reviews } = JSON.parse(req.body.data)
     const ar = [];
-    itineraries.forEach((item, index) => {
+    itineraries.forEach((item) => {
 
         ar.push({
             title: item.title,
@@ -157,7 +158,8 @@ export const updateapackage = async (req, res) => {
                     // overview: req.body.overview,
                     includes: includes,
                     itineraries: ar,
-                    Guide: Guide
+                    Guide: Guide,
+                    reviews: reviews
                 }
             })
             if (data) {

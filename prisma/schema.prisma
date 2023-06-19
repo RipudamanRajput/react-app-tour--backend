@@ -57,6 +57,7 @@ model Packages {
   includes       Includes[]
   itineraries    Itineraries[]
   Guide          Guidelist[]
+  reviews        Reviews[]
 }
 
 model PackageType {
@@ -79,6 +80,13 @@ type Guidelist {
   Guide_description String?
   Guide_social      String
   Guide_thumbnail   String
+}
+
+type Reviews {
+  Comment      String?
+  description  String?
+  rating       Int    @default(0)
+  thumbnailUrl String?
 }
 
 type Includes {
