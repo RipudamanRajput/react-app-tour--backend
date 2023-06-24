@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import { mailer } from './module/Middleware/expressValidation';
 import Mediarouter from './module/Mediarouter';
+import PublicApiRouter from './module/PublicApiRote';
 
 const app = express();
 
@@ -47,6 +48,8 @@ app.use('/images', express.static(path.join(__dirname, './Uploadmedia')))
 app.use('/api', sessionChecker, protect, router)
 app.use('/user', createNewUser)
 app.use('/signin', protect, signin)
+app.use('/api/public',PublicApiRouter )
+
 app.use('/mailto', mailer)
 app.use('/userupdate', generateOTP)
 app.use('/resetpass', Optmmatch, resetpass)
