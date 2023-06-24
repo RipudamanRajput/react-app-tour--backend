@@ -48,7 +48,7 @@ app.use('/images', express.static(path.join(__dirname, './Uploadmedia')))
 app.use('/api', sessionChecker, protect, router)
 app.use('/user', createNewUser)
 app.use('/signin', protect, signin)
-app.use('/api/public',PublicApiRouter )
+app.use('/public',PublicApiRouter )
 
 app.use('/mailto', mailer)
 app.use('/userupdate', generateOTP)
