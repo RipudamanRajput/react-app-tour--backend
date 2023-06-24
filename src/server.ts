@@ -23,7 +23,7 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     cookie: {
         maxAge: 6000000,
-        // sameSite: 'none',
+        sameSite: 'none',
         secure: true,
     }
 }));
