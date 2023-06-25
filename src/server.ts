@@ -32,7 +32,9 @@ app.use(session({
 app.use(cors(
     {
         origin: [
-            'http://localhost',
+            'http://localhost:3002',
+            'http://localhost:3001',
+            'http://localhost:3000',
             'https://ripudamanrajput.github.io',
             "https://tour-frontend-yqo0.onrender.com",
             '*'],
