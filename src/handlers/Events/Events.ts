@@ -15,7 +15,8 @@ export async function addspot(req: any, res: any) {
                     label: req.body.label,
                     value: req.body.value,
                     island: req.body.island,
-                    Beach: req.body.Beach
+                    Beach: req.body.Beach,
+                    image: req.body.image,
                 }
             })
             res.json({ mssage: "Sport Added", result: true })
@@ -79,7 +80,8 @@ export async function addislands(req: any, res: any) {
             await prisma.islandsplaces.create({
                 data: {
                     label: req.body.label,
-                    value: req.body.value
+                    value: req.body.value,
+                    image: req.body.image,
                 }
             })
             res.json({ mssage: "Island Added", result: true })
@@ -145,6 +147,7 @@ export async function addbeaches(req: any, res: any) {
                     label: req.body.label,
                     value: req.body.value,
                     island: req.body.island,
+                    image: req.body.image,
                 }
             })
             res.json({ mssage: "Beach Added", result: true })

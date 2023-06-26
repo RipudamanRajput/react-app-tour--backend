@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["debian-openssl-1.1.x"]
 }
 
 datasource db {
@@ -51,6 +52,8 @@ model Packages {
   duration       Int
   title          String        @unique
   price          Float
+  overview       String?
+  packageimg     String?
   discount_type  String?
   discount_value Float?
   Final_price    Float?
@@ -85,7 +88,7 @@ type Guidelist {
 type Reviews {
   Comment      String?
   description  String?
-  rating       Int    @default(0)
+  rating       Int     @default(0)
   thumbnailUrl String?
 }
 
@@ -148,6 +151,7 @@ model Sports {
   value     String
   island    String
   Beach     String
+  image     String?
 }
 
 model Islandsplaces {
@@ -155,6 +159,7 @@ model Islandsplaces {
   createdAt DateTime @default(now())
   label     String
   value     String
+  image     String?
 }
 
 model Beachesplaces {
@@ -163,6 +168,7 @@ model Beachesplaces {
   label     String
   value     String
   island    String
+  image     String?
 }
 
 model Posts {
