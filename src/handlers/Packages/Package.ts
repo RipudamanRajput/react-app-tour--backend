@@ -2,7 +2,7 @@ import prisma from "../../db";
 
 // --- add package to db
 export const addpackage = async (req, res) => {
-    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide, reviews, packageimg, overview } = JSON.parse(req.body.data)
+    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide, reviews, packageimg, overview, description } = JSON.parse(req.body.data)
     const ar = [];
     itineraries.forEach((item, index) => {
         ar.push({
@@ -51,7 +51,7 @@ export const addpackage = async (req, res) => {
                         discount_value: discount_value,
                         Final_price: Final_price,
                         packageimg: packageimg,
-                        // description: req.body.description,
+                        description: description,
                         overview: overview,
                         includes: includes,
                         itineraries: ar,
@@ -108,7 +108,7 @@ export const getapackage = async (req, res) => {
 // --- update a specific package data 
 export const updateapackage = async (req, res) => {
     const id = req.params.id;
-    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide, reviews, packageimg, overview } = JSON.parse(req.body.data)
+    const { package_type, duration, title, price, discount_type, discount_value, Final_price, includes, itineraries, Guide, reviews, packageimg, overview, description } = JSON.parse(req.body.data)
     const ar = [];
     itineraries.forEach((item) => {
 
@@ -156,7 +156,7 @@ export const updateapackage = async (req, res) => {
                     discount_value: discount_value,
                     Final_price: Final_price,
                     packageimg: packageimg,
-                    // description: req.body.description,
+                    description: description,
                     overview: overview,
                     includes: includes,
                     itineraries: ar,

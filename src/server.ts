@@ -10,22 +10,25 @@ import session from 'express-session';
 import { mailer } from './module/Middleware/expressValidation';
 import Mediarouter from './module/Mediarouter';
 import PublicApiRouter from './module/PublicApiRote';
+import axios from 'axios';
+import { json } from 'stream/consumers';
 
 const app = express();
+
 
 app.use(morgan())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use(cookieParser())
-app.enable('trust proxy');
+// app.enable('trust proxy');
 app.use(session({
     name: "user_sid",
     secret: process.env.SESSION_SECRET,
     cookie: {
-        maxAge: 6000000,
-        sameSite: 'none',
-        secure: true,
+        // maxAge: 6000000,
+        // sameSite: 'none',
+        // secure: true,
     }
 }));
 

@@ -52,6 +52,7 @@ model Packages {
   duration       Int
   title          String        @unique
   price          Float
+  description    String?
   overview       String?
   packageimg     String?
   discount_type  String?
@@ -75,6 +76,7 @@ model IncludesType {
   createdAt  DateTime @default(now())
   title      String   @unique
   include_id String   @unique
+  image      String?
 }
 
 type Guidelist {
@@ -95,6 +97,7 @@ type Reviews {
 type Includes {
   include_id String
   title      String
+  image      String?
 }
 
 type Itineraries {

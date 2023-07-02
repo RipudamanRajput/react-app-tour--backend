@@ -12,7 +12,8 @@ export const addicludeitem = async (req, res) => {
                 {
                     data: {
                         include_id: req.body.include_id,
-                        title: req.body.title
+                        title: req.body.title,
+                        image: req.body.image
                     }
                 }
             )
